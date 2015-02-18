@@ -1,0 +1,1 @@
+music scrobbler for firefox
