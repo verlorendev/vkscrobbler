@@ -1,6 +1,6 @@
 
 
-var	emitSong={name:"", author:""}; // name - 6, author -  5 - object ids
+var	emitSong={track:"", artist:""}; // track - 6, artist -  5 - object ids
 var watchLastSong = function(){
 		var lastSong = unsafeWindow.audioPlayer && unsafeWindow.audioPlayer.lastSong;
 
@@ -8,15 +8,15 @@ var watchLastSong = function(){
 			var comparedSong = setSong({}, lastSong);
 			if(checkSongChange(emitSong, comparedSong)){
 		 		emitSong = setSong(emitSong, lastSong);
-		 		    
+
 				console.log('new lastSong', interval, emitSong);
 				self.port.emit("setSong", emitSong);
 			}
 		}
 	},
 	setSong = function(song, lastSong){
-		song['name'] =  lastSong[6];
-	 	song['author'] = lastSong[5];
+		song['track'] =  lastSong[6];
+	 	song['artist'] = lastSong[5];
 	 	return song;
 	},
 	copySong = function(){
@@ -25,7 +25,7 @@ var watchLastSong = function(){
 	checkSongChange = function(oldSong, newSong){
 
 	//	return oldSong.name!=newSong.name || oldSong.author!=newSong.author;
-		return ["name", "author"].every(function(el){
+		return ["track"].every(function(el){
 			return newSong[el] !== oldSong[el];
 		})
 	};
@@ -44,7 +44,7 @@ var setWatchInterval = function(){
 // 	// else
 // 	console.log('gotSong',interval,  song);
 
-  
+
 // });
 
 setWatchInterval();
