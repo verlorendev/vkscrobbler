@@ -1,3 +1,5 @@
+
+
 var	emitSong={name:"", author:""}; // name - 6, author -  5 - object ids
 var watchLastSong = function(){
 		var lastSong = unsafeWindow.audioPlayer && unsafeWindow.audioPlayer.lastSong;
